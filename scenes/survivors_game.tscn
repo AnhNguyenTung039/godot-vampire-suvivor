@@ -23,6 +23,12 @@ position = Vector2(1000, 569)
 [node name="Mob" parent="." instance=ExtResource("2_k7mqt")]
 position = Vector2(279, 414)
 
+[node name="Mob2" parent="." instance=ExtResource("2_k7mqt")]
+position = Vector2(558, 828)
+
+[node name="Mob3" parent="." instance=ExtResource("2_k7mqt")]
+position = Vector2(227, 683)
+
 [node name="PineTree" parent="." instance=ExtResource("2_qp0os")]
 position = Vector2(655, 273)
 
