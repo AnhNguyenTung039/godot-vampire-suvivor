@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ba3ykw68cxcea"]
+[gd_scene load_steps=5 format=3 uid="uid://ba3ykw68cxcea"]
 
 [ext_resource type="Script" path="res://scenes/survivors_game.gd" id="1_7gbaw"]
 [ext_resource type="PackedScene" uid="uid://dldbdpirn1qsj" path="res://scenes/player.tscn" id="1_o6dfq"]
-[ext_resource type="PackedScene" uid="uid://d6enr7swd4rx" path="res://scenes/mob.tscn" id="2_k7mqt"]
 [ext_resource type="PackedScene" uid="uid://ck2vo6aw4l3qn" path="res://scenes/pine_tree.tscn" id="2_qp0os"]
 
 [sub_resource type="Curve2D" id="Curve2D_g333d"]
@@ -19,15 +18,9 @@ script = ExtResource("1_7gbaw")
 layer = -30
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -964.5
-offset_top = -539.0
-offset_right = 964.5
-offset_bottom = 539.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -35,14 +28,15 @@ grow_vertical = 2
 unique_name_in_owner = true
 position = Vector2(1000, 566)
 
-[node name="Mob" parent="." instance=ExtResource("2_k7mqt")]
-position = Vector2(279, 414)
+[node name="Path2D" type="Path2D" parent="Player"]
+position = Vector2(-1001.18, -514.248)
+scale = Vector2(0.979602, 0.973554)
+curve = SubResource("Curve2D_g333d")
 
-[node name="Mob2" parent="." instance=ExtResource("2_k7mqt")]
-position = Vector2(558, 828)
-
-[node name="Mob3" parent="." instance=ExtResource("2_k7mqt")]
-position = Vector2(227, 683)
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
+unique_name_in_owner = true
+position = Vector2(-58, -85)
+rotation = 0.000948766
 
 [node name="PineTree" parent="." instance=ExtResource("2_qp0os")]
 position = Vector2(655, 273)
@@ -62,12 +56,37 @@ position = Vector2(726, 306)
 [node name="PineTree6" parent="." instance=ExtResource("2_qp0os")]
 position = Vector2(1796, 398)
 
-[node name="Path2D" type="Path2D" parent="."]
-position = Vector2(-1.73339, 50.2066)
-scale = Vector2(0.970114, 0.955372)
-curve = SubResource("Curve2D_g333d")
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="GameOver" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
-position = Vector2(-58, -85)
-rotation = 0.000948766
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.156863)
+
+[node name="Label" type="Label" parent="GameOver/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -11.5
+offset_right = 43.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 150
+text = "Game Over"
+
+[connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

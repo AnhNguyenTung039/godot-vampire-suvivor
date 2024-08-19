@@ -9,6 +9,7 @@ radius = 51.4781
 [node name="Mob" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 3
+platform_floor_layers = 4294967040
 script = ExtResource("1_57kdi")
 
 [node name="Slime" parent="." instance=ExtResource("1_uk74o")]
