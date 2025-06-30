@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal health_depleted
 
+#var health = 10.0
 var health = 100.0
 const DAMAGE_RATE = 5.0
 

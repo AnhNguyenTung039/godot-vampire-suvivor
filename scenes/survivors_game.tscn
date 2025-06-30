@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ba3ykw68cxcea"]
+[gd_scene load_steps=6 format=3 uid="uid://ba3ykw68cxcea"]
 
-[ext_resource type="Script" path="res://scenes/survivors_game.gd" id="1_7gbaw"]
+[ext_resource type="Script" uid="uid://bco2siy0u71j6" path="res://scenes/survivors_game.gd" id="1_7gbaw"]
 [ext_resource type="PackedScene" uid="uid://dldbdpirn1qsj" path="res://scenes/player.tscn" id="1_o6dfq"]
 [ext_resource type="PackedScene" uid="uid://ck2vo6aw4l3qn" path="res://scenes/pine_tree.tscn" id="2_qp0os"]
+[ext_resource type="AudioStream" uid="uid://bukpy3ri5x0wf" path="res://resources/audio/game-over-deep-male-voice-clip.mp3" id="4_uhra2"]
 
 [sub_resource type="Curve2D" id="Curve2D_g333d"]
 _data = {
@@ -87,6 +88,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 150
 text = "Game Over"
+
+[node name="DefeatMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_uhra2")
+
+[node name="GameplayMusic" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

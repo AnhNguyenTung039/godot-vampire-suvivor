@@ -12,5 +12,8 @@ func _on_timer_timeout() -> void:
 
 
 func _on_player_health_depleted() -> void:
+	 # Stop any music that's currently playing.
+	#$GameplayMusic.stop()
+	$DefeatMusic.play()
 	%GameOver.visible = true
 	get_tree().paused = true

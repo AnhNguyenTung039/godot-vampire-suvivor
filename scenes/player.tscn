@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dldbdpirn1qsj"]
 
-[ext_resource type="Script" path="res://scenes/player.gd" id="1_6qvcm"]
+[ext_resource type="Script" uid="uid://byhd2bw7d33ju" path="res://scenes/player.gd" id="1_6qvcm"]
 [ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_uvpag"]
 [ext_resource type="PackedScene" uid="uid://cp4wixgnhw3vv" path="res://scenes/gun.tscn" id="3_vmbu0"]
 
